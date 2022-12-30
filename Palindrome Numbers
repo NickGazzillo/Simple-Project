@@ -1,0 +1,11 @@
+def isPalindrome(x:int)->bool:
+    string = str(x)
+    list = []
+    for num in string:
+        list.append(num)
+    new = ''
+    for _ in range(len(list)):
+        new += list[-1]
+        list.pop(-1)
+    return new == string 
+    
