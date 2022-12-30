@@ -1,0 +1,20 @@
+def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for numbers in nums:
+            answer = target - numbers
+            if nums.count(numbers) > 1 and numbers == answer:
+                newList = [nums.index(numbers)]
+                nums[nums.index(numbers)] += 1
+                newList.append(nums.index(numbers))
+                return newList   
+            else:
+                try:
+                    if nums.index(answer)and numbers != answer:
+                        return [nums.index(numbers), nums.index(answer)]
+                except:
+                    continue
+                    
