@@ -1,0 +1,19 @@
+def romanToInt(s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        rom = {'I': 1, "V":5, 'X':10, 'L':50, 'C':100, "D":500, 'M':1000}
+        rs = 0
+        i = 0
+        for letter in s:
+            try:
+                val = rom[letter] < rom[s[i+1]]
+            except:
+                val = False
+            if val:
+                rs -= rom[letter]
+            else:
+                rs += rom[letter]
+            i += 1
+        return rs
