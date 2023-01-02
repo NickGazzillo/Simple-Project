@@ -1,0 +1,13 @@
+def containsDuplicate(nums:list):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        dict = {}
+        for integres in nums:
+            if integres in dict:
+                return True
+            else: 
+                dict[integres] = 1
+        return False
+        
