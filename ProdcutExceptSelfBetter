@@ -1,0 +1,16 @@
+def productExceptSelf(nums:list[int])->list[int]:
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        output = []
+        pre = 1
+        post = 1
+        for i in nums:
+            output.append(pre)
+            pre *= i
+        for i in range(len(nums) - 1, -1, -1):
+            output[i] *= post
+            post *= nums[i]
+        return output
+        
