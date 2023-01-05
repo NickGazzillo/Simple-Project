@@ -1,0 +1,32 @@
+def flatten(list_of_lists):
+            if len(list_of_lists) == 0:
+                return list_of_lists
+            if isinstance(list_of_lists[0], list):
+                return flatten(list_of_lists[0]) + flatten(list_of_lists[1:])
+            return list_of_lists[:1] + flatten(list_of_lists[1:])
+
+def topKFrequent(nums:list[int], k:int)->list:
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        bucket = [None] * (len(nums) + 1)
+        for i in nums:
+            count = nums.count(i)
+            if bucket[count] == None:
+                bucket[count] = i
+            elif bucket[count] == i:
+                continue
+            else:
+                bucket[count] = [bucket[count]]
+                bucket[count].append(i)
+        value = []
+        for i in range((len(bucket)-1),0,-1):
+            if bucket[i] != None:
+                value.append(bucket[i])
+            if len(value) == k:
+                break
+        value = flatten(value)
+        return value
+ 
